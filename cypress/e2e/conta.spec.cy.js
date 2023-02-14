@@ -15,4 +15,15 @@ describe('Should test at a functional level', () => {
         cy.get('.btn').click()
         cy.get('.alert').should('contain', 'Conta adicionada com sucesso!')
     })
+
+    it.only('Must change an account', () => {
+        cy.get('.dropdown-toggle').click()
+        cy.get('[href="/contas"]').click()
+        cy.get('[href="/editarConta?id=1597203"] > .glyphicon').click()
+        cy.get('#nome')
+            .clear()
+            .type('Conta alterada')
+        cy.get('.btn').click()
+        cy.get('.alert').should('contain', 'Conta alterada com sucesso!')
+    })
 })
