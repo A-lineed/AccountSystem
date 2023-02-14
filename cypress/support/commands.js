@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import loc from './locators'
+
+Cypress.Commands.add('login', (user, password) => {
+    cy.visit('https://seubarriga.wcaquino.me/login')
+    cy.get(loc.LOGIN.USER).type('alineedvania2018@outlook.com')
+    cy.get(loc.LOGIN.PASSWORD).type('85850219')
+    cy.get(loc.LOGIN.BTN_LOGIN).click()
+    cy.get(loc.ALERT).should('contain', 'Bem vindo, Aline Edvania de Franca!')
+})

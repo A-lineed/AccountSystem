@@ -17,7 +17,8 @@ const locators = {
     LISTAR: {
         NOME: '#nome',
         BTN_SALVAR: '.btn',
-        XP_BTN_ALTERAR: '[href="/editarConta?id=1597203"] > .glyphicon'
+        XP_BTN_ALTERAR: '[href="/editarConta?id=1597203"] > .glyphicon',
+        RESET: '[href="/removerConta?id=1597203"] > .glyphicon'
     },
     ALERT: '.alert'
 }

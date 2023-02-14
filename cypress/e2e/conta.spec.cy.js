@@ -4,11 +4,7 @@ import loc from '../support/locators'
 
 describe('Should test at a functional level', () => {
     before(() => {
-        cy.visit('https://seubarriga.wcaquino.me/login')
-        cy.get(loc.LOGIN.USER).type('alineedvania2018@outlook.com')
-        cy.get(loc.LOGIN.PASSWORD).type('85850219')
-        cy.get(loc.LOGIN.BTN_LOGIN).click()
-        cy.get(loc.ALERT).should('contain', 'Bem vindo, Aline Edvania de Franca!')
+        cy.login('alineedvania2018@outlook.com', '85850219')
     })
     it('Must add an account', () => {
         cy.get(loc.MENU.CONTAS).click()
