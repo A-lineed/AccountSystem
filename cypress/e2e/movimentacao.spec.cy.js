@@ -14,12 +14,10 @@ describe('Should test at a functional level', () => {
         cy.get(loc.MOVIMENTACAO.DESCRICAO).type('Movimentação para teste')
         cy.get(loc.MOVIMENTACAO.INTERESSADO).type('Teste')
         cy.get(loc.MOVIMENTACAO.VALOR).type('1000')
+        cy.get(loc.MOVIMENTACAO.PAGO).click()
         cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
         cy.get(loc.ALERT).should('contain', 'Movimentação adicionada com sucesso!')
         cy.get('[href="/extrato"]').click()
 
     })
 })
-
-
-movement

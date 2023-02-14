@@ -5,9 +5,10 @@ const locators = {
         BTN_LOGIN: '.btn'
     },
     MENU: {
+        HOME: '.active > [href="/"]',
         CONTAS: '.dropdown-toggle',
         ADICIONAR: '[href="/addConta"]',
-        LISTAR:    '[href="/contas"]',
+        LISTAR: '[href="/contas"]',
         MOVIMENTACAO: '[href="/movimentacao"]'
     },
     ADICIONAR: {
@@ -27,7 +28,11 @@ const locators = {
         DESCRICAO: '#descricao',
         INTERESSADO: '#interessado',
         VALOR: '#valor',
+        PAGO: '#status_pago',
         BTN_SALVAR: '.btn'
+    },
+    SALDO: {
+        FN_XP_SALDO_CONTA: nome => `//td[contains(.,'${nome}')]/../td[2]`
     },
     ALERT: '.alert'
 }
