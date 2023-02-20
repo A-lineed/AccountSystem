@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import loc from '../support/locators'
+import loc from '../../support/locators'
 
 describe('Should test at a functional level', () => {
     before(() => {
