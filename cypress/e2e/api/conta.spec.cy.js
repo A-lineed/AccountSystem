@@ -28,7 +28,7 @@ describe('Should test at a API level', () => {
         })
     })
 
-    it.only('Should update an account', () => {
+    it('Should update an account', () => {
         cy.request({
             method: 'GET',
             url: 'https://barrigarest.wcaquino.me/contas/',
@@ -50,7 +50,20 @@ describe('Should test at a API level', () => {
         })
     })
 
-    it('Should create an existing account', () => {
+    it.only('Should create an existing account', () => {
+        cy.request({
+            url: 'https://barrigarest.wcaquino.me/contas',
+            method: 'POST',
+            headers: { Authorization: `JWT ${token}` },
+            body: {
+                nome: 'Conta para alterar'
+            },
+            failOnStatusCode: false
+        }).as('response')
 
+        cy.get('@response').then(res => {
+            expect(res.status).to.be.equal(400)
+            expect(res.body.error).to.be.equal('Já existe uma conta com esse nome!')
+        })
     })
 })
