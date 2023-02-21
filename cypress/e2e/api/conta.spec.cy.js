@@ -29,16 +29,10 @@ describe('Should test at a API level', () => {
     })
 
     it('Should update an account', () => {
-        cy.request({
-            method: 'GET',
-            url: 'https://barrigarest.wcaquino.me/contas/',
-            headers: { Authorization: `JWT ${token}` },
-            qs: {
-                nome: 'Conta para alterar'
-            }
-        }).then(res => {
+        cy.getAccountByName('Conta para alterar')
+        .then(contaId => {
             cy.request({
-                url: `https://barrigarest.wcaquino.me/contas/${res.body[0].id}`,
+                url: `https://barrigarest.wcaquino.me/contas/${contaId}`,
                 method: 'PUT',
                 headers: { Authorization: `JWT ${token}` },
                 body: {
@@ -50,7 +44,7 @@ describe('Should test at a API level', () => {
         })
     })
 
-    it.only('Should create an existing account', () => {
+    it('Should create an existing account', () => {
         cy.request({
             url: 'https://barrigarest.wcaquino.me/contas',
             method: 'POST',
