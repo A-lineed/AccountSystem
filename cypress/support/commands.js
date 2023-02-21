@@ -56,3 +56,18 @@ Cypress.Commands.add('resetRest', () => {
 
     })
 })
+
+Cypress.Commands.add('getAccountByName', name => {
+    cy.getToken('aline', '123').then(token => {
+        cy.request({
+            method: 'GET',
+            url: 'https://barrigarest.wcaquino.me/contas/',
+            headers: { Authorization: `JWT ${token}` },
+            qs: {
+                nome: name
+            }
+        }).then(res => {
+            return res.body[0].id
+        })
+    })
+})
