@@ -33,3 +33,15 @@ Cypress.Commands.add('login', (user, password) => {
     cy.get(loc.LOGIN.BTN_LOGIN).click()
     cy.get(loc.ALERT).should('contain', 'Bem vindo, Aline Edvania de Franca!')
 })
+
+Cypress.Commands.add('getToken', (user, passwd) => {
+    cy.request({
+        method: 'POST',
+        url: 'https://barrigarest.wcaquino.me/signin',
+        body: {
+            email: "aline",
+            redirecionar:false,
+            senha: "123"
+        }
+    }).its('body.token').should('not.be.empty')
+})
