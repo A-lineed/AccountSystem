@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
 
 describe('Should test at a API level', () => {
-    let token
+   // let token
     before(() => {
         cy.getToken('aline', '123')
-            .then(tkn => {
+            /* .then(tkn => {
                 token = tkn
-            })
+            }) */
     })
     beforeEach(() => {
         cy.resetRest()
@@ -18,7 +18,7 @@ describe('Should test at a API level', () => {
                 cy.request({
                     method: 'POST',
                     url: 'https://barrigarest.wcaquino.me/transacoes',
-                    headers: { Authorization: `JWT ${token}` },
+                  //  headers: { Authorization: `JWT ${token}` },
                     body: {
                         conta_id: contaId,
                         data_pagamento: "21/02/2023",

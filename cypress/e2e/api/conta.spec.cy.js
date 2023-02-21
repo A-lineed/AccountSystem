@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
 
 describe('Should test at a API level', () => {
-    let token
+    //let token
     before(() => {
         cy.getToken('aline', '123')
-            .then(tkn => {
+          /*   .then(tkn => {
                 token = tkn
-            })
+            }) */
     })
     beforeEach(() => {
         cy.resetRest()
@@ -15,7 +15,7 @@ describe('Should test at a API level', () => {
         cy.request({
             url: 'https://barrigarest.wcaquino.me/contas',
             method: 'POST',
-            headers: { Authorization: `JWT ${token}` },
+           // headers: { Authorization: `JWT ${token}` },
             body: {
                 nome: 'Conta via rest'
             }
@@ -34,7 +34,7 @@ describe('Should test at a API level', () => {
             cy.request({
                 url: `https://barrigarest.wcaquino.me/contas/${contaId}`,
                 method: 'PUT',
-                headers: { Authorization: `JWT ${token}` },
+              //  headers: { Authorization: `JWT ${token}` },
                 body: {
                     nome: 'Conta alterada via rest'
                 }
@@ -48,7 +48,7 @@ describe('Should test at a API level', () => {
         cy.request({
             url: 'https://barrigarest.wcaquino.me/contas',
             method: 'POST',
-            headers: { Authorization: `JWT ${token}` },
+          //  headers: { Authorization: `JWT ${token}` },
             body: {
                 nome: 'Conta para alterar'
             },
