@@ -40,8 +40,19 @@ Cypress.Commands.add('getToken', (user, passwd) => {
         url: 'https://barrigarest.wcaquino.me/signin',
         body: {
             email: "aline",
-            redirecionar:false,
+            redirecionar: false,
             senha: "123"
         }
     }).its('body.token').should('not.be.empty')
+})
+
+Cypress.Commands.add('resetRest', () => {
+    cy.getToken('aline', '123').then(token => {
+        cy.request({
+            method: 'GET',
+            url: 'https://barrigarest.wcaquino.me/reset',
+            headers: { Authorization: `JWT ${token}` }
+        }).its('status').should('be.equal', 200)
+
+    })
 })
